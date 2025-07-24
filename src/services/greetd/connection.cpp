@@ -66,11 +66,6 @@ void GreetdConnection::createSession(QString user) {
 void GreetdConnection::cancelSession() { this->setActive(false); }
 
 void GreetdConnection::respond(QString response) {
-	if (!this->mResponseRequired) {
-		qCCritical(logGreetd) << "Cannot respond to greetd as a response is not currently required.";
-		return;
-	}
-
 	this->sendRequest({
 	    {"type", "post_auth_message_response"},
 	    {"response", response},
